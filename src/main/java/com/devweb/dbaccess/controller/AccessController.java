@@ -1,25 +1,35 @@
 package com.devweb.dbaccess.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.devweb.dbaccess.entity.register;
+import com.devweb.dbaccess.entity.Register;
+import com.devweb.dbaccess.repository.RegisterJpaRepository;
 
 
 @Controller
 @RequestMapping("/access")
 public class AccessController {
 	
-	@GetMapping("/register")
+	@Autowired
+	@Qualifier("registerJpaRepository")
+	private RegisterJpaRepository registerJpa;
+	
+	@GetMapping("/registrar")
 	public String Newregister (Model model) {
-		List<register> registro = new ArrayList<>();
-		
+		model.addAttribute("register", new Register());
 		return "register_html";
+	}
+	
+	@PostMapping("/registrar")
+	public String Newregister (Register reg) {
+		registerJpa.save(reg);
+		return "endregister_html";
 	}
 
 }
