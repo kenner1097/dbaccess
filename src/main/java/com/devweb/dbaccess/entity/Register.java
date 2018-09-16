@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "register")
-public class register {
+public class Register {
 	
 	@Id
 	@GeneratedValue
@@ -65,7 +65,7 @@ public class register {
 	/**
 	 * Constructors
 	 */
-	public register(int id, String nombre, String apellidos, String password, String roleUser, String email) {
+	public Register(int id, String nombre, String apellidos, String password, String roleUser, String email) {
 		this.id = id;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
@@ -74,7 +74,7 @@ public class register {
 		this.email = email;
 	}
 	
-	public register() {
+	public Register() {
 		
 	}
 	
