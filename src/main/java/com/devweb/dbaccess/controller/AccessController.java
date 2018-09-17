@@ -20,6 +20,11 @@ public class AccessController {
 	@Qualifier("registerJpaRepository")
 	private RegisterJpaRepository registerJpa;
 	
+	@GetMapping("/home")
+	public String Newregister () {
+		return "index";
+	}	
+	
 	@GetMapping("/registrar")
 	public String Newregister (Model model) {
 		model.addAttribute("register", new Register());
